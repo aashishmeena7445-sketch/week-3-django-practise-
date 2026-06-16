@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth Dashboard & Blog App</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; padding: 20px; box-shadow: 0 0 10px #ddd; }
+        .hidden { display: none; }
+        .box { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+        input, textarea, button { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
+        button { background-color: #007BFF; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="login-section" class="box">
+        <h2>User Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div id="dashboard-section" class="box hidden">
+        <h2>Welcome, <span id="user-display"></span>! 🌟</h2>
+        <p><strong>Bio:</strong> <span id="bio-display"></span></p>
+        <button onclick="logout()" style="background-color: #DC3545;">Logout</button>
+    </div>
+
+    <div class="box">
+        <h2>Create Blog Post (Login Required)</h2>
+        <input type="text" id="post-title" placeholder="Post Title">
+        <textarea id="post-content" placeholder="Post Content"></textarea>
+        <button onclick="createPost()">Publish Post</button>
+    </div>
+
+    <div class="box">
+        <h2>Latest Blog Posts (Public)</h2>
+        <div id="blog-list"></div>
+    </div>
+
+    <script>
+        const API_URL = "http://127.0.0.1:8000/api/";
+
+
